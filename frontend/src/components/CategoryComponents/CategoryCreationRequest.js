@@ -26,7 +26,7 @@ const CCRPage = () => {
 
 
     useEffect(() => {
-        fetch(`https://api.blogoo.app/api/categories/${category_id}`, { 
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/categories/${category_id}`, { 
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -64,7 +64,7 @@ const CCRPage = () => {
             'request_details': form[2].value,
         }
         
-        fetch(`https://api.blogoo.app/api/categories/category-request`, {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/categories/category-request`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

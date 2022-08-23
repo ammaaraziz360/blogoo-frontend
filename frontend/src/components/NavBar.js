@@ -19,12 +19,12 @@ const NavBar = () => {
 
     useEffect(() => {
         if (logged_in_state.isLoggedIn) {
-            fetch(`https://api.blogoo.app/api/users/profile`, {
+            fetch(`${process.env.REACT_APP_DOMAIN}/api/users/profile`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': cookie.get('token'),
+                    'Authorization': "Bearer " + cookie.get('token'),
                     'user_id': cookie.get('user_id'),
                     'ip': sessionStorage.getItem('ip'),
                     'user_agent': navigator.userAgent,
@@ -64,7 +64,7 @@ const NavBar = () => {
     }, [logged_in_state.isLoggedIn]);
 
     const LogOut = () => {
-        fetch('https://api.blogoo.app/api/users/logout', {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/users/logout`, {
             method: 'POST',
             mode: 'cors',
             headers: {

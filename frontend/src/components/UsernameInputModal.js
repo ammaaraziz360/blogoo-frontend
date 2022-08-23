@@ -57,7 +57,7 @@ const EnterUsernameModal = ({...Props}) => {
         setUsernameAlertToggle(false)
         
         var username = {username: input}
-        fetch('https://api.blogoo.app/api/users', { 
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/users`, { 
             method: 'PUT',
             mode: 'cors',
             headers: {

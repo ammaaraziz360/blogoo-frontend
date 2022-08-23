@@ -17,7 +17,7 @@ const CategoryPage = () => {
 
 
     useEffect(() => {
-        fetch(`https://api.blogoo.app/api/categories/${category_name}`, {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/categories/${category_name}`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {

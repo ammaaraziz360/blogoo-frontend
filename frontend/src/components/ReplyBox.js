@@ -22,7 +22,7 @@ const ReplyBox = ({loggedin_user_info, post_info}) => {
         setPostText('');
 
         if(logged_in_state.isLoggedIn == true) {
-            fetch('https://api.blogoo.app/api/posts', {
+            fetch(`${process.env.REACT_APP_DOMAIN}/api/posts`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

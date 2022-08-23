@@ -24,7 +24,7 @@ const EditBioModal = ({...Props}) => {
 
     const HandleSubmit = () => {
         
-        fetch('https://api.blogoo.app/api/users', {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/users`, {
             method: 'PUT',
             mode: 'cors',
             headers: {

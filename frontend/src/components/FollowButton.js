@@ -17,7 +17,7 @@ const FollowButton = ({userProfile}) => {
     useEffect(() => {
         if(didMount.current) {
             if (logged_in_state.isLoggedIn) {
-                fetch(`https://api.blogoo.app/api/users/${userProfile.user_id}/follow`, {
+                fetch(`${process.env.REACT_APP_DOMAIN}/api/users/${userProfile.user_id}/follow`, {
                         method: 'POST',
                         mode: 'cors',
                         headers: {

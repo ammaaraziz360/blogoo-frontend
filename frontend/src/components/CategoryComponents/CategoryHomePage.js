@@ -14,7 +14,7 @@ const CategoryHomePage = () => {
     const [CategoryHomeData, setCategoryHomeData] = useState(null)
 
     useEffect(() => {
-        fetch(`https://api.blogoo.app/api/categories`, {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/categories`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {

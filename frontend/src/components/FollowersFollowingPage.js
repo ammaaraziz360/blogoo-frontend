@@ -16,7 +16,7 @@ const FollowersFollowingPage = ({type}) => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch(`https://api.blogoo.app/api/users/${username}/${type}`, {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/users/${username}/${type}`, {
             method: 'GET',
             mode: 'cors',
             headers: {

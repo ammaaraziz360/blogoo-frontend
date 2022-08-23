@@ -23,7 +23,7 @@ const Comment = ({post_info, loggedin_user_info}) => {
     const [IsReplying, setIsReplying] = useState(false);
     const FetchComments = () => {
         setFetching(true);
-        fetch(`https://api.blogoo.app/api/posts/${post_info.post_id}/comments`, {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/posts/${post_info.post_id}/comments`, {
             method: 'GET',
             mode: 'cors',
             headers: {

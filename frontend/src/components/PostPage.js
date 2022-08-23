@@ -19,7 +19,7 @@ const PostPage = () => {
     const [PostInfo, setPostInfo] = useState(null)
 
     useEffect(() => {
-        fetch(`https://api.blogoo.app/api/posts/${id}`, {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/posts/${id}`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {

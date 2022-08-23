@@ -125,7 +125,7 @@ const EditSocialsModal = ({EditSocials, SetEditSocials, userInfo, refreshProfile
             }
         }
 
-        fetch('https://api.blogoo.app/api/users/socials', { 
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/users/socials`, { 
             method: 'PUT',
             mode: 'cors',
             headers: {

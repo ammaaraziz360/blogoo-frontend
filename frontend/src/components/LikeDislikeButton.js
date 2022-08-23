@@ -63,7 +63,7 @@ const LikeDislikeButton = ({post_info, loggedin_user_info}) => {
                     like_dislike_payload = {"interaction_type": 2}
                 }
 
-                fetch(`https://api.blogoo.app/api/posts/${post_info.post_id}/like`, {
+                fetch(`${process.env.REACT_APP_DOMAIN}/api/posts/${post_info.post_id}/like`, {
                     method: 'POST',
                     mode: 'cors',
                     headers: {

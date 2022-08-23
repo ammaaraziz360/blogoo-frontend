@@ -53,7 +53,7 @@ const LoginPage = ({...Props}) => {
 
         sessionStorage.setItem("google_auth_token", response.getAuthResponse().id_token)
 
-        fetch('https://api.blogoo.app/api/users/login', {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/users/login`, {
             method: 'POST',
             mode: 'cors',
             body: JSON.stringify(user_data),

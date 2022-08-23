@@ -22,7 +22,7 @@ const ProfilePage = ({...Props}) => {
     const { username } = useParams();
 
     useEffect(() => {
-        fetch(`https://api.blogoo.app/api/users/profile/${username}`, {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/users/profile/${username}`, {
             method: 'GET',
             mode: 'cors',
             headers: {

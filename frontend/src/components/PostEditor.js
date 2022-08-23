@@ -118,7 +118,7 @@ const PostEditor = ({category_id}) => {
                         body: post, 
                         reply_post_id: null,
                         category_id: category_id}
-        fetch('https://api.blogoo.app/api/posts', {
+        fetch(`${process.env.REACT_APP_DOMAIN}/api/posts`, {
             method: 'POST',
             mode: 'cors',
             headers: {

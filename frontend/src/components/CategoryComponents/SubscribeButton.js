@@ -17,7 +17,7 @@ const SubscribeButton = ({category_info}) => {
     useEffect(() => {
         if(didMount.current) {
             if (logged_in_state.isLoggedIn) {
-                fetch(`https://api.blogoo.app/api/categories/${category_info.category_id}/subscribe`, {
+                fetch(`${process.env.REACT_APP_DOMAIN}/api/categories/${category_info.category_id}/subscribe`, {
                         method: 'POST',
                         mode: 'cors',
                         headers: {
