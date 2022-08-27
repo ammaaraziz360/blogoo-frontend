@@ -28,23 +28,11 @@ const LoginPage = ({...Props}) => {
 
     const history = useHistory()
 
-    useEffect(() => {
-        fetch(`https://api.ipify.org?format=json`, {
-            method: 'GET',
-            mode: 'cors',
-        })
-            .then((res => res.json()))
-            .then(data => {
-                sessionStorage.setItem('ip', data.ip)
-        })
-
-    },[]);
-
     const responseGoogle = (response) => { 
         var google_user = response.profileObj
 
         var user_data = {
-            'user_id': "",
+            'user-id': "",
             'email': google_user.email,
             'last_name': google_user.familyName,
             'first_name': google_user.givenName,
@@ -59,9 +47,7 @@ const LoginPage = ({...Props}) => {
             body: JSON.stringify(user_data),
             headers: {
                 'Content-Type': 'application/json',
-                'google_auth_token': response.getAuthResponse().id_token,
-                'user_agent': navigator.userAgent,
-                'ip': sessionStorage.getItem('ip')
+                'google-auth-token': response.getAuthResponse().id_token,
             },
         }) 
             .then(res => {
@@ -74,12 +60,12 @@ const LoginPage = ({...Props}) => {
                 }
              }) 
             .then(data => {
-                cookies.set('user_id', data.user_id, { path: '/' })
+                cookies.set('user-id', data.user_id, { path: '/' })
                 cookies.set('SID', data.session_id, { path: '/' })
                 if(data['user_exists'] == 1){
                     localStorage.setItem('logged_in', 'true')
                     logged_in_state.setIsLoggedIn(true);
-                    history.push(`/user/${cookies.get('user_id')}`)
+                    history.push(`/user/${cookies.get('user-id')}`)
                 }
                 else {
                     localStorage.setItem('logged_in', 'false')
@@ -103,23 +89,28 @@ const LoginPage = ({...Props}) => {
     }
 
     return(
-        <div>
-            <div className='vh-100 smokey_black container-fluid p-0'>
-                <div className="row m-0 h-100">
-                    <div className="d-flex p-0 align-items-center sub h-50 align-self-center border border-white rounded">
-                        <div className="d-flex p-4 w-100 justify-content-center">
-                                <GoogleLogin
-                                    clientId= {clientId}
-                                    buttonText="Login with Google"
-                                    onSuccess={responseGoogle}
-                                    onFailure={NoResponseGoogle}
-                                    cookiePolicy={'single_host_origin'}
-                                    className="d-flex justify-content-center"
-                                />
+        <>
+            <div className='smokey_black'>
+                    <div className='m-4 row justify-content-center'>
+                        <div className='col-lg-6 col-sm-12 justify-content-center'>
+                            <div className="p-3 full-border">
+                                <div style={{"color": "white"}} className='text-center'>
+                                    <h2>Sign in to Blogoo</h2>
+                                    <p>Or create an account</p>
+                                </div>
+                                <div className="d-flex p-4 justify-content-center">
+                                    <GoogleLogin
+                                        clientId= {clientId}
+                                        buttonText="Log in with Google"
+                                        onSuccess={responseGoogle}
+                                        onFailure={NoResponseGoogle}
+                                        cookiePolicy={'single_host_origin'}
+                                    />
+                            </div>
+                            </div>
                         </div>
                     </div>
-
-                </div>
+                   
             </div>
             {toggleUsernameModal 
                 ? <EnterUsernameModal toggleModal = {toggleUsernameModal}
@@ -131,7 +122,7 @@ const LoginPage = ({...Props}) => {
             <BlankModal toggleModal = {toggleModal}
                         setToggleModal = {setToggleModal}
                         text = {modalText}/>
-        </div>
+        </>
     )
 }
 

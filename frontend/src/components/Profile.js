@@ -39,8 +39,7 @@ const Profile = ({ userProfile, loggedinUser}) => {
                         <div className="d-flex flex-column p-3">
                             <div><h3>{userProfile.first_name} {userProfile.last_name}</h3></div>
                             <div className="muted"><h5>@{userProfile.username}</h5></div>
-                            
-                            {!userProfile.own_account ? 
+       {!userProfile.own_account ? 
                                 <div className="d-flex justify-content-center">
                                 <FollowButton userProfile={userProfile} className="mt-3"/>
                                 </div>

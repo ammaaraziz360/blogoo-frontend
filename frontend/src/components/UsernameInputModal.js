@@ -62,10 +62,8 @@ const EnterUsernameModal = ({...Props}) => {
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': cookies.get('token'),
-                'user_id': cookies.get('user_id'),
-                'ip': sessionStorage.getItem('ip'),
-                'user_agent': navigator.userAgent,
+                'Authorization': 'Bearer ' + cookies.get('token'),
+                'user-id': cookies.get('user-id'),
                 'SID': cookies.get('SID')
             },
             body: JSON.stringify(username)
@@ -77,7 +75,7 @@ const EnterUsernameModal = ({...Props}) => {
             if(res.status === 200){
                 localStorage.setItem('logged_in', 'true')
                 logged_in_state.setIsLoggedIn(true);
-                history.push(`/user/${cookies.get('user_id')}`)
+                history.push(`/user/${cookies.get('user-id')}`)
             }
             else{
                 localStorage.setItem('logged_in', 'false')

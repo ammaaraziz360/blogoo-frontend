@@ -22,10 +22,9 @@ const SubscribeButton = ({category_info}) => {
                         mode: 'cors',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': cookie.get('token'),
-                            'user_id': cookie.get('user_id'),
-                            'ip': sessionStorage.getItem('ip'),
-                            'user_agent': navigator.userAgent,
+                            'Authorization': 'Bearer ' + cookie.get('token'),
+                            'user-id': cookie.get('user-id'),
+         
                             'SID': cookie.get('SID')
                         },
                         body: JSON.stringify({subscribe_type: subscribed}),

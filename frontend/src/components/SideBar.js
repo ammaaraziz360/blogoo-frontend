@@ -34,7 +34,7 @@ const SideBar = () => {
                     <Button size="lg"><BsPeople/><div>Explore</div></Button>
                     <Button size="lg" onClick={()=>history.push('/category/home')}><RiLeafLine/><div>Categories</div></Button>
                     {logged_in_state.isLoggedIn ? 
-                    <Button size="lg" onClick={()=>history.push(`/user/${cookie.get('user_id')}`)}><CgProfile/><div>Profile</div></Button>
+                    <Button size="lg" onClick={()=>history.push(`/user/${cookie.get('user-id')}`)}><CgProfile/><div>Profile</div></Button>
                     : null}
                     {logged_in_state.isLoggedIn ? 
                     <Button size="lg"><FiSettings/><div>Settings</div></Button>

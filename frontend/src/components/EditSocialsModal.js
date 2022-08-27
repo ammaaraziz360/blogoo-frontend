@@ -130,10 +130,8 @@ const EditSocialsModal = ({EditSocials, SetEditSocials, userInfo, refreshProfile
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': cookies.get('token'),
-                'user_id': cookies.get('user_id'),
-                'ip': sessionStorage.getItem('ip'),
-                'user_agent': navigator.userAgent,
+                'Authorization': 'Bearer ' + cookies.get('token'),
+                'user-id': cookies.get('user-id'),
                 'SID': cookies.get('SID')
             },
             body: JSON.stringify(socials)

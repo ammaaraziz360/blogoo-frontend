@@ -24,10 +24,8 @@ const NavBar = () => {
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': "Bearer " + cookie.get('token'),
-                    'user_id': cookie.get('user_id'),
-                    'ip': sessionStorage.getItem('ip'),
-                    'user_agent': navigator.userAgent,
+                    'Authorization': 'Bearer ' + cookie.get('token'),
+                    'user-id': cookie.get('user-id'),
                     'SID': cookie.get('SID')
                 },
             })
@@ -54,9 +52,7 @@ const NavBar = () => {
             })
         } else{
             cookie.remove('token', {path: '/'})
-            cookie.remove('user_id', {path: '/'})
-            cookie.remove('ip', {path: '/'})
-            cookie.remove('user_agent', {path: '/'})
+            cookie.remove('user-id', {path: '/'})
             cookie.remove('SID', {path: '/'})
             setUserProfile(null)
         }
@@ -69,18 +65,14 @@ const NavBar = () => {
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': cookie.get('token'),
-                'user_id': cookie.get('user_id'),
-                'ip': sessionStorage.getItem('ip'),
-                'user_agent': navigator.userAgent,
+                'Authorization': 'Bearer ' + cookie.get('token'),
+                'user-id': cookie.get('user-id'),
                 'SID': cookie.get('SID')
             },
         }).then(res=> {
             if(res.status === 200) {
                 cookie.remove('token', {path: '/'})
-                cookie.remove('user_id', {path: '/'})
-                cookie.remove('ip', {path: '/'})
-                cookie.remove('user_agent', {path: '/'})
+                cookie.remove('user-id', {path: '/'})
                 cookie.remove('SID', {path: '/'})
             }
             localStorage.setItem('logged_in', 'false');
@@ -107,8 +99,7 @@ const NavBar = () => {
                         </div>
                     <div className="d-flex col-3 justify-content-end align-items-center">
                         <div className="dropdown sub">
-                            
-                            <a className="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+       <a className="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 {userProfile != null ? <img src={userProfile.pfp_url} className="image-fluid pfp"></img>
                                             : <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" className="image-fluid pfp"></img>
                                 }
